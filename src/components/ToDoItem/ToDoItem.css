@@ -1,0 +1,6 @@
+.task{
+    background-color: whitesmoke;
+}
+.title,.taskId{
+    color: palevioletred;
+}
