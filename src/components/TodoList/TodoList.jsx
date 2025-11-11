@@ -5,7 +5,7 @@ import AddTask from "../AddTask/AddTask";
 
 export default function TodoList() {
 
-    const [myTasks, setMyTasks] = useState([{ id: 1, title: "hw" }, { id: 2, title: "learn for the test" }, { id: 3, title: "go sleep" }]);
+    const [myTasks, setMyTasks] = useState([{ id: 1, title: "hw", taskStatus: true }, { id: 2, title: "learn for the test", taskStatus:true }, { id: 3, title: "go sleep" , taskStatus:false}]);
 
     function AddTaskTitle(newTitle) {
         if (!newTitle.trim()) return; // optional: מונע משימות ריקות
@@ -15,13 +15,28 @@ export default function TodoList() {
             return;
         }
 
-        setMyTasks([...myTasks, { id: Date.now(), title: newTitle }])
+        setMyTasks([...myTasks, { id: Date.now(), title: newTitle, taskStatus: false }])
     }
+
+      function setAsDone(taskid) {
+    // מעדכן רק את המשימה הספציפית בלחיצה
+    setMyTasks(
+      myTasks.map((task) =>
+        task.id === taskid ? { ...task, taskStatus: true } : task
+      )
+    );
+  }
+
+function deleteTask(taskId) {
+  setMyTasks(myTasks.filter(task => task.id !== taskId));
+}
+
+
     return (
         <>
             <h2>My Tasks List</h2>
             {myTasks.map((task) => (
-                <ToDoItem key={task.id} id={task.id} title={task.title} ></ToDoItem>
+                <ToDoItem key={task.id} id={task.id} title={task.title} taskStatus={task.taskStatus} setAsDone={setAsDone} deleteTask={deleteTask}></ToDoItem>
             ))}
             <AddTask AddTaskTitle={AddTaskTitle}></AddTask>
         </>

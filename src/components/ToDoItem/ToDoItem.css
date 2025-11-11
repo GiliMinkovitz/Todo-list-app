@@ -1,6 +1,65 @@
-.task{
-    background-color: whitesmoke;
+/* ToDoItem.css */
+
+.task {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* ריווח בין השורות */
+  padding: 12px 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-bottom: 12px;
+  font-family: Poppins, sans-serif;
+  color: #333;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.title,.taskId{
-    color: palevioletred;
+
+.task:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
+
+.taskId,
+.title,
+.status {
+  margin: 0;
+  font-size: 14px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.status {
+  font-style: italic;
+}
+
+button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* ניתן להוסיף סגנון שונה לכל כפתור לפי סוג */
+button:first-of-type {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+button:last-of-type {
+  background-color: #ff6b6b;
+  color: #fff;
+}
+
